@@ -182,5 +182,9 @@ def main(cidade):
 	output['resultado'].update(musicas)	
 	return output
 
+@app.route('/')
+def mensagem_padrao():
+	return jsonify({"mensagem": "Utilize um dos endpoints para o funcionamento correto da aplicação."})
+
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port='8080')
