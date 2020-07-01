@@ -1,0 +1,8 @@
+Flask
+uwsgi
+cachetools
+circuitbreaker
+pymongo
+Flask-Limiter
+requests
+datetime
