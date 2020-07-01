@@ -6,12 +6,11 @@ import base64
 import random
 import datetime
 import json
-import time
 import config_propriedades
 from cachetools import cached, TTLCache
 from circuitbreaker import circuit
 from pymongo import MongoClient
-from flask import Flask, request, abort, make_response, jsonify
+from flask import Flask, abort, make_response, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
