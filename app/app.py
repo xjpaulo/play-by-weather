@@ -7,6 +7,7 @@ import random
 import datetime
 import json
 import time
+import config_propriedades
 from cachetools import cached, TTLCache
 from circuitbreaker import circuit
 from pymongo import MongoClient
@@ -15,7 +16,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = Flask('ingaia-challenge')
-cache = TTLCache(maxsize=2048, ttl=300)
+cache = TTLCache(maxsize=config_propriedades.cache_max_size, ttl=config_propriedades.cache_ttl)
 limiter = Limiter(app, key_func=get_remote_address)
 
 @cached(cache)
@@ -31,7 +32,7 @@ def retorna_genero(temperatura):
 @circuit(failure_threshold=5, expected_exception=KeyError)
 @cached(cache)
 def openweather_temperatura(cidade):
-	query = {'q': cidade, 'units': 'metric', 'appid': 'a8f51e0af7669b4b89c4753481b033c4'}
+	query = {'q': cidade, 'units': 'metric', 'appid': config_propriedades.openweather}
 	try:
 		response = requests.get('http://api.openweathermap.org/data/2.5/weather', params=query)
 		json_response = response.json()
@@ -45,8 +46,8 @@ def openweather_temperatura(cidade):
 @circuit(failure_threshold=5)
 def spotify_autenticar():
 	url = 'https://accounts.spotify.com/api/token'
-	spotify_client_id = '81f2b9cbffda4264b911d2979a32958d'
-	spotify_client_secret = 'e40c5ef181604a70a2e843a6414b038d'
+	spotify_client_id = config_propriedades.spotify_client_id
+	spotify_client_secret = config_propriedades.spotify_secret_id
 	spotify_client = spotify_client_id + ':' + spotify_client_secret
 	data = {
 		'grant_type' : 'client_credentials'
@@ -113,8 +114,8 @@ def spotify_musica(access_token, playlist_url, playlist_total):
 	return musicas
 
 def banco_config():
-	mongo_client = MongoClient('localhost', 27017)
-	banco = mongo_client['ingaia_challenge_db']
+	mongo_client = MongoClient(config_propriedades.mongo_client_host, config_propriedades.mongo_client_port)
+	banco = mongo_client[config_propriedades.mongo_db]
 	return mongo_client, banco
 	
 def gravar_historico(cidade, temperatura, genero, playlist_url):
