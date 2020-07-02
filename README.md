@@ -1,2 +1,50 @@
 # ingaia-challenge
-Um serviço que retorna playlists específicas de música baseadas na temperatura da cidade fornecida.
+
+Um micro-serviço web que retorna playlists específicas de música baseadas na temperatura da cidade fornecida. Esta API foi desenvolvida em Python, utilizando Flask, uWSGI, MongoDB e Docker.
+
+## Introdução
+
+A API recebe uma cidade como entrada, e retorna em JSON playlists aleatórias com base na temperatura atual da cidade fornecida.
+- Caso a temperatura seja maior que 25 graus Celsius, deverá retornar playlists de músicas pop;
+- Caso esteja entre 10 e 25 graus Celsius, deverá retornar playlists de músicas de rock;
+- Caso esteja abaixo de 10 graus Celsius, deverá retornar playlists de música clássica.
+
+O serviço também possui um histórico de chamadas que é armazenado em um banco de dados.
+
+## Pré-requisitos
+
+ - [docker](https://docs.docker.com/)
+ - [docker-compose](https://docs.docker.com/compose/)
+
+## Infraestrutura
+
+ - Gateway - Foi utilizado o uWSGI para permitir e controlar processos simultâneos;
+ - API - Aplicação constrúida em Python junto com o framework Flask para criação de endpoints. Utiliza cache em algumas funções e possui circuit breaker.
+ - Banco de dados - Grava o histórico de chamadas da API dentro de um banco MongoDB;
+ - Docker - Utiliza dois containers: um para a API e para o serviço web, e outro para o banco de dados.
+
+## Configuração
+Para iniciar as aplicações, execute o docker-compose na pasta raiz:
+```
+$ docker-compose up --detach --build
+```
+Os logs podem ser acompanhados pelo comando:  
+```
+$ docker-compose logs --folow
+```
+## Funcionamento
+
+Após a instalação, a API ficará disponível através do endereço, onde a cidade para requisição deverá substituir \<cidade\>:
+
+``http://localhost:8080/musicas/<cidade>``
+
+**Endpoints:**
+
+ - Retornar sugestões de músicas pelo nome da cidade:
+```
+GET localhost:8080/musicas/<cidade>
+```
+ - Retornar o histórico de chamadas:
+``` 
+GET localhost:8080/historico/musicas
+```
