@@ -21,7 +21,7 @@ O serviço também possui um histórico de chamadas e estatísticas que é armaz
 ## Infraestrutura
 
  - Gateway - Foi utilizado o uWSGI para permitir e controlar processos simultâneos;
- - API - Aplicação constrúida em Python junto com o framework Flask para criação de endpoints. Utiliza cache em algumas funções e possui circuit breaker.
+ - API - Aplicação constrúida em Python junto com o framework Flask para criação de endpoints. Utiliza cache em algumas funções, possui rate limit e circuit breaker.
  - Banco de dados - Grava o histórico de chamadas da API dentro de um banco MongoDB;
  - Docker - Utiliza dois containers: um para a API e para o serviço web, e outro para o banco de dados.
 
