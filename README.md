@@ -9,7 +9,9 @@ A API recebe uma cidade como entrada, e retorna em JSON playlists aleatórias co
 - Caso esteja entre 10 e 25 graus Celsius, deverá retornar playlists de músicas de rock;
 - Caso esteja abaixo de 10 graus Celsius, deverá retornar playlists de música clássica.
 
-O serviço também possui um histórico de chamadas que é armazenado em um banco de dados.
+São utilizadas a API do OpenWeather para consultar a temperatura atual, e a API do Spotify para retornar as informações sobre as músicas.
+
+O serviço também possui um histórico de chamadas e estatísticas que é armazenado em um banco de dados.
 
 ## Pré-requisitos
 
