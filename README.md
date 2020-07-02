@@ -36,7 +36,7 @@ $ docker-compose logs --folow
 ```
 ## Funcionamento
 
-Após a instalação, a API ficará disponível através do endereço, onde a cidade para requisição deverá substituir \<cidade\>:
+Após a instalação a API ficará disponível através do endereço abaixo, onde a cidade para requisição deverá substituir \<cidade\>:
 
 ``http://localhost:8080/musicas/<cidade>``
 
