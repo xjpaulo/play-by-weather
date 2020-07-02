@@ -14,8 +14,8 @@ Um micro-serviço web que retorna playlists específicas de música baseadas na 
  - Banco de dados - Grava o histórico de chamadas da API dentro de um banco MongoDB;
  - Docker - Utiliza dois containers: um para a API e para o serviço web, e outro para o banco de dados.
 
-## Instalação
-Para iniciar as aplicações, execute o docker-compose:
+## Configuração
+Para iniciar as aplicações, execute o docker-compose na pasta raiz:
 ```
 $ docker-compose up --detach --build
 ```
