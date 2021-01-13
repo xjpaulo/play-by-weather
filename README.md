@@ -32,7 +32,7 @@ $ docker-compose up --detach --build
 ```
 Os logs podem ser acompanhados pelo comando:  
 ```
-$ docker-compose logs --folow
+$ docker-compose logs --follow
 ```
 ## Funcionamento
 
