@@ -14,7 +14,7 @@ from flask import Flask, abort, make_response, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
-app = Flask('ingaia-challenge')
+app = Flask('play-by-weather')
 app.config['JSON_AS_ASCII'] = False
 cache = TTLCache(maxsize=config_propriedades.cache_max_size, ttl=config_propriedades.cache_ttl)
 limiter = Limiter(app, key_func=get_remote_address)
