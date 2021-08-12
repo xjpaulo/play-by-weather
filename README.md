@@ -42,7 +42,7 @@ Após a instalação a API ficará disponível através do endereço abaixo, ond
 
 **Endpoints:**
 
- - Retornar sugestões de músicas pelo nome da cidade:
+ - Retornar playlists de músicas pelo nome da cidade:
 ```
 GET localhost:8080/api/v1/playlists/cidades/<cidade>
 ```
