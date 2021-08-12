@@ -1,6 +1,6 @@
 # play-by-weather
 
-Um serviço web que retorna playlists específicas de música baseadas na temperatura da cidade fornecida. Esta API foi desenvolvida em Python, utilizando Flask, uWSGI, MongoDB e Docker.
+Uma API REST que retorna playlists específicas de música baseadas na temperatura da cidade fornecida. Esta API foi desenvolvida em Python, utilizando Flask, uWSGI, MongoDB e Docker.
 
 ## Introdução
 
