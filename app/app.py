@@ -126,7 +126,7 @@ def gravar_historico(cidade, temperatura, genero, playlist_url):
 	except:
 		retornar_erro(0, 'Ocorreu um erro com o banco de dados.')
 
-@app.route('/historico/musicas', methods=['GET'])
+@app.route('/api/v1/playlists/historico', methods=['GET'])
 @limiter.limit("100/hour;5/minute")
 def retornar_historico():
 	(mongo_client, banco) = banco_config()
@@ -158,7 +158,7 @@ def validar(cidade):
 	if not all(caracter.isalpha() or caracter.isspace() for caracter in cidade):
 		retornar_erro('400', 'Cidade com caracteres inválidos! Utilize apenas letras e espaços.')
 
-@app.route('/musicas/<string:cidade>', methods=['GET'])
+@app.route('/api/v1/playlists/cidades/<string:cidade>', methods=['GET'])
 @limiter.limit("100/hour;5/minute")
 def main(cidade):
 	validar(cidade)
