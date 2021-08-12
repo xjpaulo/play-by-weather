@@ -7,13 +7,13 @@ RUN apk add --virtual .build-dependencies \
             linux-headers \
             pcre
 
-WORKDIR /var/www/ingaia-challenge
-RUN mkdir -p /var/www/ingaia-challenge/app
-COPY ./app /var/www/ingaia-challenge/app
-COPY requirements.txt /var/www/ingaia-challenge
+WORKDIR /var/www/play-by-weather
+RUN mkdir -p /var/www/play-by-weather/app
+COPY ./app /var/www/play-by-weather/app
+COPY requirements.txt /var/www/play-by-weather
 RUN pip3 install -r requirements.txt
-WORKDIR /var/www/ingaia-challenge/app
+WORKDIR /var/www/play-by-weather/app
 RUN apk del .build-dependencies && rm -rf /var/cache/apk/*
 
 EXPOSE 8080
-CMD ["uwsgi", "--ini", "/var/www/ingaia-challenge/app/wsgi.ini"]
+CMD ["uwsgi", "--ini", "/var/www/play-by-weather/app/wsgi.ini"]
