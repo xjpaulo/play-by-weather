@@ -26,6 +26,12 @@ O serviço também possui um histórico de chamadas e estatísticas que é armaz
  - Docker - Utiliza dois containers: um para a API e para o serviço web, e outro para o banco de dados.
 
 ## Configuração
+Após clonar o repositório, será necessário definir as variáveis contendo os tokens das APIs do OpenWeatherMap e do Spotify no arquivo app/config_propriedades.py
+
+Clique aqui(https://openweathermap.org/appid) para requisitar o APPID do OpenWeatherMap, e aqui(https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app) para requisitar o CLIENT_ID e CLIENT_SECRET do Spotify.
+
+Com os tokens em mãos, defina as variáveis ```openweather```, ```spotify_client_id``` e ```spotify_secret_id``` no arquivo de configurações.
+
 Para iniciar a aplicação, execute o docker-compose na pasta raiz:
 ```
 $ docker-compose up --detach --build
