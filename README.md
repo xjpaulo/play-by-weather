@@ -44,15 +44,15 @@ Após a instalação a API ficará disponível através do endereço abaixo, ond
 
  - Retornar sugestões de músicas pelo nome da cidade:
 ```
-GET localhost:8080/musicas/<cidade>
+GET localhost:8080/api/v1/playlists/cidades/<cidade>
 ```
  - Retornar o histórico de chamadas:
 ``` 
-GET localhost:8080/historico/musicas
+GET localhost:8080/api/v1/playlists/historico
 ```
 
 ## Heroku
 Foi realizado um deploy dessa aplicação na plataforma Heroku, que pode ser consultada utilizando um dos endpoints acima:
 
-https://ingaia-challenge-python.herokuapp.com/
+https://play-by-weather.herokuapp.com/
 
