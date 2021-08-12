@@ -80,12 +80,11 @@ def spotify_playlists(access_token, genero):
 		retornar_erro(0, 'Ocorreu um erro ao retornar as playlists do Spotify.')
 	json_response_spotify = response_spotify.json()
 	playlist_url = json_response_spotify['playlists']['items'][0]['tracks']['href']
-	playlist_total = json_response_spotify['playlists']['items'][0]['tracks']['total']
-	return playlist_url, playlist_total
+	return playlist_url
 
 @circuit(failure_threshold=5)
 @cached(cache)
-def spotify_musica(access_token, playlist_url, playlist_total):
+def spotify_musica(access_token, playlist_url):
 	headers = {
 		'Authorization': "Bearer " + access_token
 	}
@@ -165,8 +164,8 @@ def main(cidade):
 	validar(cidade)
 	temperatura = openweather_temperatura(cidade)
 	access_token = spotify_autenticar()
-	(playlist_url, playlist_total) = spotify_playlists(access_token, retorna_genero(temperatura))
-	musicas = spotify_musica(access_token, playlist_url, playlist_total)
+	(playlist_url) = spotify_playlists(access_token, retorna_genero(temperatura))
+	musicas = spotify_musica(access_token, playlist_url)
 
 	output = {
 		'resultado': {
