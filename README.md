@@ -50,3 +50,9 @@ GET localhost:8080/musicas/<cidade>
 ``` 
 GET localhost:8080/historico/musicas
 ```
+
+## Heroku
+Foi realizado um deploy dessa aplicação na plataforma Heroku, que pode ser consultada utilizando um dos endpoints acima:
+
+https://ingaia-challenge-python.herokuapp.com/
+
